@@ -1,16 +1,30 @@
-
 import 'package:flutter/material.dart';
+import 'package:flutter_local_notifications/flutter_local_notifications.dart';
+import 'dart:io' show Platform;
 
-class MyNotifyScreen extends StatefulWidget {
-  MyNotifyScreen({Key? key}) : super(key: key);
+class MyLocalNotiffication {
+  FlutterLocalNotificationsPlugin flutterLocalNotificationsPlugin;
 
-  @override
-  _MyNotifyScreenState createState() => _MyNotifyScreenState();
-}
+  MyLocalNotiffication.int() {
+    flutterLocalNotificationsPlugin = FlutterLocalNotificationsPlugin();
+    if (Platform.isIOS) {
+      requestIOSPermission();
+    }
+    initializePlatform();
+  }
 
-class _MyNotifyScreenState extends State<MyNotifyScreen> {
-  @override
-  Widget build(BuildContext context) {
-    return Container();
+  void requestIOSPermission() {
+    flutterLocalNotificationsPlugin
+        .resolvePlatformSpecificImplementation<
+            IOSFlutterLocalNotificationsPlugin>()
+        .requestPermissions(
+          alert: true,
+          badge: true,
+          sound: true
+        );
+  }
+
+  void initializePlatform() {
+    var ini 
   }
 }
