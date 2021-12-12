@@ -5,7 +5,7 @@ import 'dart:io' show Platform;
 class MyLocalNotiffication {
   FlutterLocalNotificationsPlugin flutterLocalNotificationsPlugin;
 
-  MyLocalNotiffication.int() {
+  MyLocalNotiffication.init() {
     flutterLocalNotificationsPlugin = FlutterLocalNotificationsPlugin();
     if (Platform.isIOS) {
       requestIOSPermission();
